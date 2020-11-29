@@ -1,0 +1,72 @@
+$sp: 400px;
+$md: 768px;
+
+@mixin sp {
+  @media screen and (min-width: $sp) {
+    @content;
+  };
+}
+@mixin md {
+  @media screen and (min-width: $md) {
+    @content;
+  };
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+h2 {
+  margin-top: 0;
+}
+%todo-area-base {
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 10px 0;
+  ul {
+    padding-left: 20px;
+    li:before {
+      content: "・";
+    }
+  }
+  button {
+    background-color: #aaeecc;
+    border-radius: 10px;
+  }
+  button:hover {
+    background-color: #ff9955;
+  }
+}
+.input-area {
+  @extend %todo-area-base;
+  background-color: #44ffff;
+  display: flex;
+
+  input {
+    width: 100%;
+    margin-right: 5px;
+    flex-shrink: 9;
+        @include sp {
+          width: 300px;
+    }
+  }
+  button {
+    flex-shrink: 1;
+    white-space: nowrap;
+  }
+}
+.progress-area {
+  @extend %todo-area-base;
+  background-color: #ffaaaa;
+}
+.complete-area {
+  @extend %todo-area-base;
+  background-color: #aaffaa;
+}
+.todo-item {
+  margin-left: 20px;
+  display: flex;
+  .todo-title {
+    margin-right: 10px;
+  }
+}
